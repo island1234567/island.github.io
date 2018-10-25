@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        option = {
+            title: {
+                text: "广州",
+                x: "center"
+            },
+            tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                x: "left",
+                data: ["街边", "商场"]
+            },
+            label: {
+                normal: {
+                    formatter: "{b} ({d}%)",
+                    position: "insideTopRight"
+                }
+            },
+            labelLine: {
+                normal: {
+                    smooth: .6
+                }
+            },
+            toolbox: {
+                show: !0,
+                feature: {
+                    mark: {
+                        show: !0
+                    },
+                    dataView: {
+                        show: !0,
+                        readOnly: !1
+                    },
+                    magicType: {
+                        show: !0,
+                        type: ["pie", "funnel"]
+                    },
+                    restore: {
+                        show: !0
+                    },
+                    saveAsImage: {
+                        show: !0
+                    }
+                }
+            },
+            calculable: !0,
+            series: [{
+                name: "奶茶店数量",
+                type: "pie",
+                roseType: "area",
+                label: {
+                    normal: {
+                        show: !0
+                    },
+                    emphasis: {
+                        show: !0
+                    }
+                },
+                lableLine: {
+                    normal: {
+                        show: !0
+                    },
+                    emphasis: {
+                        show: !0
+                    }
+                },
+                data: [{
+                    value: 95,
+                    name: "商场",
+                    itemStyle: {
+                        color: '#A5F8EA'
+                    }
+                }, {
+                    value: 396,
+                    name: "街边",
+                    itemStyle: {
+                        color: '#D4F8FC'
+                    }
+                }]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
